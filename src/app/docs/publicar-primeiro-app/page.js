@@ -1,5 +1,326 @@
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'Publicar seu Primeiro App — Developer Console',
+  description: 'Caminho completo do zero até a publicação do app na Aurora Play, do cadastro ao envio para análise.',
+}
+
 export default function Page() {
   return (
-    <div dangerouslySetInnerHTML={{ __html: "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n<title>Publicar seu Primeiro App — Developer Console</title>\n<style>body{font-family:Arial,sans-serif;font-size:15px;line-height:1.65;color:#1a1a2e;background:#fff;max-width:900px;margin:0 auto;padding:0 20px 48px;}h1{color:#2c7df0;font-size:1.7em;margin-top:0;}h2{color:#2c7df0;font-size:1.25em;border-bottom:2px solid #e8f0fe;padding-bottom:4px;margin-top:32px;}h3{color:#1a56db;font-size:1.05em;margin-top:24px;}hr{border:none;border-top:1px solid #dde3f0;margin:28px 0;}blockquote{border-left:4px solid #2c7df0;margin:16px 0;padding:10px 16px;background:#f0f5ff;color:#333;border-radius:0 6px 6px 0;}code{background:#f0f5ff;color:#1a56db;padding:2px 5px;border-radius:4px;font-size:.88em;font-family:Courier New,monospace;}pre{background:#1e2235;color:#e2e8f0;padding:16px 18px;border-radius:8px;overflow-x:auto;font-size:.85em;line-height:1.5;margin:16px 0;}pre code{background:transparent;color:inherit;padding:0;font-size:inherit;}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.93em;}th{background:#2c7df0;color:#fff;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #dde3f0;vertical-align:top;}tr:nth-child(even) td{background:#f7f9ff;}ul,ol{padding-left:22px;margin:10px 0;}li{margin-bottom:5px;}p{margin:10px 0;}strong{color:#1a1a2e;}nav{background:#1e2235;padding:14px 20px;margin:0 -20px 32px;display:flex;align-items:center;gap:16px;}nav a{color:#9ca3af;text-decoration:none;font-size:.9em;}nav a:hover{color:#fff;}.brand{color:#2c7df0!important;font-weight:bold;font-size:1em!important;}.sep{color:#4b5563;}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px;}.card{border:1px solid #dde3f0;border-radius:8px;padding:20px;}.card h3{margin:0 0 8px;font-size:1em;}.card h3 a{color:#2c7df0;text-decoration:none;}.card h3 a:hover{text-decoration:underline;}.card p{margin:0;color:#555;font-size:.9em;}</style>\n</head>\n<body>\n<nav><a href=\"/docs\" class=\"brand\">Developer Console</a><span class=\"sep\"> / </span><a href=\"/docs/publicar-primeiro-app\">Publicar seu Primeiro App</a></nav>\n<h1>Guia: Publicar seu Primeiro App</h1>\n<p>Este guia cobre o caminho completo do zero até a publicação do app na Aurora Play, desde a criação do projeto até o envio para análise.</p>\n<hr>\n<h2>Pré-requisito</h2>\n<p>Tenha uma conta de desenvolvedor ativa na Aurora Play e acesse o <strong>Developer Console</strong> com sua conta Google vinculada.</p>\n<hr>\n<h2>Passo 0 — Criar o app</h2>\n<p>Na tela inicial (lista de apps), crie um novo projeto:</p>\n<ol>\n  <li>Preencha o <strong>título</strong> do app (nome exibido na loja)</li>\n  <li>Selecione o <strong>tipo</strong>: Aplicativo ou Jogo</li>\n  <li>Selecione o <strong>modelo</strong>: Gratuito ou Pago</li>\n</ol>\n<ul>\n  <li>Se pago, informe o <strong>preço</strong> em R$</li>\n</ul>\n<ol>\n  <li>Aceite as <strong>diretrizes da Aurora Play</strong></li>\n  <li>Confirme — o app é criado com status <strong>rascunho</strong></li>\n</ol>\n<p>Você será redirecionado para a lista de apps. Abra o app recém-criado para acessar o Dashboard.</p>\n<hr>\n<h2>O checklist de 5 passos</h2>\n<p>No Dashboard do app em rascunho você verá o <strong>checklist de configuração</strong>. Os 5 passos devem ser feitos na ordem — cada um é desbloqueado após o anterior ser concluído.</p>\n<blockquote>O menu lateral está bloqueado durante todo o rascunho. Use exclusivamente os passos do checklist para navegar.</blockquote>\n<hr>\n<h2>Passo 1 — Página Detalhes</h2>\n<p>Acesse clicando no <strong>passo 1</strong> do checklist.</p>\n<p>Configure as informações visuais do app na loja:</p>\n<table>\n<thead>\n<tr>\n  <th>Campo</th>\n  <th>Detalhe</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Ícone</td>\n  <td>Imagem do app. Na primeira vez, assista ao vídeo de especificações antes de selecionar</td>\n</tr>\n<tr>\n  <td>Título</td>\n  <td>Nome exibido na loja</td>\n</tr>\n<tr>\n  <td>Descrição</td>\n  <td>Texto completo descrevendo o app</td>\n</tr>\n<tr>\n  <td>Desenvolvedor</td>\n  <td>Nome do desenvolvedor ou empresa</td>\n</tr>\n<tr>\n  <td>Screenshots</td>\n  <td>Mínimo de <strong>3 imagens</strong> obrigatórias</td>\n</tr>\n<tr>\n  <td>Disponibilidade</td>\n  <td>Disponível ou Indisponível</td>\n</tr>\n</tbody>\n</table>\n<p>Ao salvar, as imagens são enviadas ao servidor (processo leva alguns segundos). Após concluir, você retorna ao Dashboard e o passo 1 é marcado como completo.</p>\n<hr>\n<h2>Passo 2 — Conteúdo</h2>\n<p>Acesse clicando no <strong>passo 2</strong> do checklist.</p>\n<p>Defina a classificação e categoria do app:</p>\n<p><strong>Categoria:</strong> selecione a categoria mais adequada ao tipo do app. Exemplos para aplicativos: Educação, Entretenimento, Produtividade. Exemplos para jogos: Casual, RPG, Arcade.</p>\n<p><strong>Classificação indicativa:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Opção</th>\n  <th>Faixa de idade</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Classificação livre</td>\n  <td>Todas as idades</td>\n</tr>\n<tr>\n  <td>Classificação 10 anos</td>\n  <td>A partir de 10 anos</td>\n</tr>\n<tr>\n  <td>Classificação 12 anos</td>\n  <td>A partir de 12 anos</td>\n</tr>\n<tr>\n  <td>Classificação 14 anos</td>\n  <td>A partir de 14 anos</td>\n</tr>\n<tr>\n  <td>Classificação 16 anos</td>\n  <td>A partir de 16 anos</td>\n</tr>\n<tr>\n  <td>Classificação 18 anos</td>\n  <td>Apenas adultos</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Conteúdo adulto:</strong> declare se o app contém ou não conteúdo adulto.</p>\n<p>Todos os campos são obrigatórios. Ao salvar, o passo 2 é marcado como completo.</p>\n<hr>\n<h2>Passo 3 — Estratégia de lançamento (Testes)</h2>\n<p>Acesse clicando no <strong>passo 3</strong> do checklist.</p>\n<p>Este é o <strong>portão de decisão</strong> — a escolha feita aqui define o comportamento do passo 4. Existem três caminhos:</p>\n<h3>Caminho A: Publicação direta</h3>\n<ul>\n  <li>Marque a opção de <strong>não testar</strong></li>\n  <li>No passo 4, o APK será enviado diretamente para produção</li>\n</ul>\n<h3>Caminho B: Pré-lançamento beta</h3>\n<ul>\n  <li>Marque a opção de <strong>testar</strong></li>\n  <li>Deixe o pré-registro <strong>desmarcado</strong></li>\n  <li>No passo 4, o APK será enviado para uma faixa de teste</li>\n  <li>Após o upload, você terá acesso ao gerenciamento de testadores</li>\n</ul>\n<h3>Caminho C: Pré-registro</h3>\n<ul>\n  <li>Marque a opção de <strong>testar</strong></li>\n  <li>Marque também o <strong>pré-registro</strong></li>\n  <li>O passo 4 (APK) será <strong>ignorado</strong> — no pré-registro, usuários se inscrevem pela página pública na loja, sem receber o APK</li>\n  <li>Vá diretamente para o passo 5</li>\n</ul>\n<pre><code>Quer testar?\n│\n├── NÃO → Passo 4: APK para produção\n│\n└── SIM\n      ├── Sem pré-registro → Passo 4: APK para faixa de teste + testadores\n      └── Com pré-registro → Pular passo 4</code></pre>\n<p>Ao salvar, o passo 3 é marcado como completo.</p>\n<hr>\n<h2>Passo 4 — Upload do APK</h2>\n<blockquote>Se escolheu pré-registro no passo 3, <strong>pule este passo</strong> — ele não aparecerá no checklist.</blockquote>\n<p>Acesse clicando no <strong>passo 4</strong> do checklist, depois toque em <strong>Nova Versão</strong>.</p>\n<p><strong>O que você precisa:</strong></p>\n<ul>\n  <li>O arquivo APK do app</li>\n</ul>\n<p><strong>O que o sistema extrai automaticamente do APK:</strong></p>\n<ul>\n  <li>Nome do pacote (packageName)</li>\n  <li>Versão do app (ex: 2.1)</li>\n  <li>Código da versão (ex: 21)</li>\n  <li>Tamanho do arquivo</li>\n</ul>\n<p><strong>O que você preenche:</strong></p>\n<ul>\n  <li>Campo <strong>Novidades</strong>: descreva o que há de novo nesta versão (obrigatório)</li>\n</ul>\n<p><strong>Regras importantes:</strong></p>\n<ul>\n  <li>O packageName do APK deve ser o mesmo cadastrado no projeto (não é possível trocar)</li>\n  <li>O código de versão deve ser maior que o atual (não é possível fazer downgrade)</li>\n</ul>\n<p>Após confirmar, o APK é enviado com barra de progresso em tempo real.</p>\n<p><strong>Se escolheu pré-lançamento beta (Caminho B):</strong> após o upload, você terá acesso à tela de <strong>Gerenciar Testadores</strong> para adicionar quem pode testar o app antes do lançamento.</p>\n<hr>\n<h2>Passo 5 — Publicação</h2>\n<p>Acesse clicando no <strong>passo 5</strong> do checklist.</p>\n<p>Esta é a tela de revisão final. O console lista automaticamente todas as alterações pendentes agrupadas em dois blocos:</p>\n<ul>\n  <li><strong>Página detalhes</strong>: título, descrição, ícone, screenshots, nome do desenvolvedor</li>\n  <li><strong>Produção</strong>: versão do APK e novidades (se aplicável)</li>\n</ul>\n<p>Para enviar:</p>\n<ol>\n  <li>Revise o resumo das alterações</li>\n  <li>Clique em <strong>Publicar</strong></li>\n  <li>Confirme no diálogo que aparece</li>\n</ol>\n<p>Após confirmar:</p>\n<ul>\n  <li>O status muda para <strong>Atualização pendente</strong></li>\n  <li>Você é redirecionado para a lista de apps</li>\n  <li>O <strong>menu lateral é desbloqueado</strong> após a aprovação pela equipe Aurora Play</li>\n</ul>\n<hr>\n<h2>O que acontece após o envio</h2>\n<table>\n<thead>\n<tr>\n  <th>Situação</th>\n  <th>O que fazer</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td><strong>Atualização pendente</strong></td>\n  <td>Aguardar análise. Você pode continuar editando o app enquanto espera</td>\n</tr>\n<tr>\n  <td><strong>Atualização publicada</strong></td>\n  <td>App disponível na loja. Menu lateral desbloqueado para gerenciamento completo</td>\n</tr>\n<tr>\n  <td><strong>Atualização recusada</strong></td>\n  <td>O motivo será exibido no Dashboard. Corrija os problemas indicados e envie novamente pelo menu lateral &gt; Publicação</td>\n</tr>\n</tbody>\n</table>\n<hr>\n<h2>Próximos passos após a publicação</h2>\n<p>Com o app publicado, você terá acesso a todos os módulos pelo menu lateral:</p>\n<ul>\n  <li><strong>Analytics</strong> — acompanhe instalações, dispositivos ativos e conversão</li>\n  <li><strong>Avaliações</strong> — veja e responda comentários dos usuários</li>\n  <li><strong>Finanças</strong> — monitore ganhos do AdAstra (requer integração do módulo AdAstra no app)</li>\n  <li><strong>Debug</strong> — monitore erros e crashes em produção</li>\n  <li><strong>Gênus AI</strong> — consulte a IA com dados do app para estratégias e melhorias</li>\n</ul>\n\n</body>\n</html>" }} />
+    <div className="min-h-screen bg-white text-[#1a1a2e]" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+      {/* Navbar */}
+      <nav className="bg-[#1e2235] px-8 py-3.5 flex items-center justify-between">
+        <Link href="/" className="text-[#2c7df0] font-bold text-base no-underline">
+          Developer Console
+        </Link>
+        <div className="flex items-center gap-6">
+          <Link href="/docs" className="text-[#9ca3af] text-sm no-underline hover:text-white transition-colors">
+            Documentação
+          </Link>
+          <a
+            href="https://mobsoft-console.up.railway.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#2c7df0] text-white px-4 py-2 rounded-md text-sm font-medium no-underline hover:bg-[#1a6de0] transition-colors"
+          >
+            Acessar Console
+          </a>
+        </div>
+      </nav>
+
+      {/* Breadcrumb */}
+      <div className="bg-[#f7f9ff] border-b border-[#dde3f0] px-6 py-3">
+        <div className="max-w-3xl mx-auto flex items-center gap-2 text-sm text-[#6b7280]">
+          <Link href="/docs" className="text-[#2c7df0] no-underline hover:underline">Documentação</Link>
+          <span>/</span>
+          <span className="text-[#1a1a2e]">Publicar seu Primeiro App</span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <main className="max-w-3xl mx-auto px-6 py-10 pb-16">
+        <h1 className="text-3xl font-bold text-[#2c7df0] mb-2">Guia: Publicar seu Primeiro App</h1>
+        <p className="text-[#555] text-base mb-8 leading-relaxed">
+          Este guia cobre o caminho completo do zero até a publicação do app na Aurora Play,
+          desde a criação do projeto até o envio para análise.
+        </p>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Pré-requisito */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Pré-requisito
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-8">
+          Tenha uma conta de desenvolvedor ativa na Aurora Play e acesse o <strong>Developer Console</strong> com sua conta Google vinculada.
+        </p>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 0 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 0 — Criar o app
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Na tela inicial (lista de apps), crie um novo projeto:
+        </p>
+        <ol className="text-sm text-[#444] pl-5 space-y-2 mb-4">
+          <li>Preencha o <strong>título</strong> do app (nome exibido na loja)</li>
+          <li>Selecione o <strong>tipo</strong>: Aplicativo ou Jogo</li>
+          <li>Selecione o <strong>modelo</strong>: Gratuito ou Pago — se pago, informe o <strong>preço</strong> em R$</li>
+          <li>Aceite as <strong>diretrizes da Aurora Play</strong></li>
+          <li>Confirme — o app é criado com status <strong>rascunho</strong></li>
+        </ol>
+        <p className="text-sm text-[#444] leading-relaxed mb-8">
+          Você será redirecionado para a lista de apps. Abra o app recém-criado para acessar o Dashboard.
+        </p>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Checklist */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          O checklist de 5 passos
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          No Dashboard do app em rascunho você verá o <strong>checklist de configuração</strong>. Os 5 passos devem ser feitos na ordem — cada um é desbloqueado após o anterior ser concluído.
+        </p>
+        <div className="border-l-4 border-[#fd7e14] bg-[#fff8f0] rounded-r-lg px-4 py-3 mb-8">
+          <p className="text-sm text-[#444] m-0">
+            O menu lateral está bloqueado durante todo o rascunho. Use exclusivamente os passos do checklist para navegar.
+          </p>
+        </div>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 1 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 1 — Página Detalhes
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-4">
+          Configure as informações visuais do app na loja:
+        </p>
+        <div className="overflow-x-auto mb-4">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">Campo</th>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">Detalhe</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Ícone', 'Imagem do app. Na primeira vez, assista ao vídeo de especificações antes de selecionar'],
+                ['Título', 'Nome exibido na loja'],
+                ['Descrição', 'Texto completo descrevendo o app'],
+                ['Desenvolvedor', 'Nome do desenvolvedor ou empresa'],
+                ['Screenshots', 'Mínimo de 3 imagens obrigatórias'],
+                ['Disponibilidade', 'Disponível ou Indisponível'],
+              ].map(([campo, detalhe], i) => (
+                <tr key={campo}>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#333] font-medium ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{campo}</td>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#555] ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{detalhe}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-sm text-[#444] leading-relaxed mb-8">
+          Ao salvar, as imagens são enviadas ao servidor (processo leva alguns segundos). Após concluir, você retorna ao Dashboard e o passo 1 é marcado como completo.
+        </p>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 2 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 2 — Conteúdo
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Defina a classificação e categoria do app. Escolha a categoria mais adequada ao tipo (ex.: Educação, Casual, Produtividade).
+        </p>
+        <h3 className="text-sm font-semibold text-[#333] mb-2">Classificação indicativa</h3>
+        <div className="overflow-x-auto mb-8">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">Opção</th>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">Faixa de idade</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Classificação livre', 'Todas as idades'],
+                ['Classificação 10 anos', 'A partir de 10 anos'],
+                ['Classificação 12 anos', 'A partir de 12 anos'],
+                ['Classificação 14 anos', 'A partir de 14 anos'],
+                ['Classificação 16 anos', 'A partir de 16 anos'],
+                ['Classificação 18 anos', 'Apenas adultos'],
+              ].map(([opcao, faixa], i) => (
+                <tr key={opcao}>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#333] ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{opcao}</td>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#555] ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{faixa}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 3 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 3 — Estratégia de lançamento (Testes)
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-4">
+          Este é o <strong>portão de decisão</strong> — a escolha feita aqui define o comportamento do passo 4. Existem três caminhos:
+        </p>
+
+        <div className="space-y-4 mb-4">
+          <div className="border border-[#dde3f0] rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-[#1a1a2e] mb-2">Caminho A: Publicação direta</h3>
+            <ul className="text-sm text-[#444] pl-4 space-y-1">
+              <li>Marque a opção de <strong>não testar</strong></li>
+              <li>No passo 4, o APK será enviado diretamente para produção</li>
+            </ul>
+          </div>
+          <div className="border border-[#dde3f0] rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-[#1a1a2e] mb-2">Caminho B: Pré-lançamento beta</h3>
+            <ul className="text-sm text-[#444] pl-4 space-y-1">
+              <li>Marque a opção de <strong>testar</strong> e deixe o pré-registro <strong>desmarcado</strong></li>
+              <li>No passo 4, o APK vai para uma faixa de teste</li>
+              <li>Após o upload, você terá acesso ao gerenciamento de testadores</li>
+            </ul>
+          </div>
+          <div className="border border-[#dde3f0] rounded-lg p-4">
+            <h3 className="text-sm font-semibold text-[#1a1a2e] mb-2">Caminho C: Pré-registro</h3>
+            <ul className="text-sm text-[#444] pl-4 space-y-1">
+              <li>Marque <strong>testar</strong> e também o <strong>pré-registro</strong></li>
+              <li>O passo 4 (APK) será <strong>ignorado</strong> — usuários se inscrevem pela página pública sem receber o APK</li>
+              <li>Vá diretamente para o passo 5</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-[#1e2235] rounded-lg px-5 py-4 mb-8 font-mono text-xs text-[#e2e8f0] leading-relaxed whitespace-pre">
+{`Quer testar?
+│
+├── NÃO → Passo 4: APK para produção
+│
+└── SIM
+      ├── Sem pré-registro → Passo 4: APK para faixa de teste
+      └── Com pré-registro → Pular passo 4`}
+        </div>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 4 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 4 — Upload do APK
+        </h2>
+        <div className="border-l-4 border-[#fd7e14] bg-[#fff8f0] rounded-r-lg px-4 py-3 mb-4">
+          <p className="text-sm text-[#444] m-0">
+            Se escolheu pré-registro no passo 3, <strong>pule este passo</strong> — ele não aparecerá no checklist.
+          </p>
+        </div>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Acesse clicando no passo 4 do checklist, depois toque em <strong>Nova Versão</strong>.
+        </p>
+        <h3 className="text-sm font-semibold text-[#333] mb-2">O sistema extrai automaticamente do APK:</h3>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>Nome do pacote (packageName)</li>
+          <li>Versão do app (ex: 2.1) e código da versão (ex: 21)</li>
+          <li>Tamanho do arquivo</li>
+        </ul>
+        <h3 className="text-sm font-semibold text-[#333] mb-2">Regras importantes:</h3>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-8">
+          <li>O packageName do APK deve ser o mesmo cadastrado no projeto (não é possível trocar)</li>
+          <li>O código de versão deve ser maior que o atual (não é possível fazer downgrade)</li>
+          <li>Preencha o campo <strong>Novidades</strong> descrevendo o que há de novo nesta versão (obrigatório)</li>
+        </ul>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Passo 5 */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Passo 5 — Publicação
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Esta é a tela de revisão final. O console lista automaticamente todas as alterações pendentes em dois blocos:
+          <strong> Página detalhes</strong> e <strong>Produção</strong>.
+        </p>
+        <ol className="text-sm text-[#444] pl-5 space-y-2 mb-4">
+          <li>Revise o resumo das alterações</li>
+          <li>Clique em <strong>Publicar</strong></li>
+          <li>Confirme no diálogo que aparece</li>
+        </ol>
+        <p className="text-sm text-[#444] leading-relaxed mb-8">
+          Após confirmar, o status muda para <strong>Atualização pendente</strong> e você é redirecionado para a lista de apps.
+          O <strong>menu lateral é desbloqueado</strong> após a aprovação pela equipe Aurora Play.
+        </p>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* O que acontece após */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          O que acontece após o envio
+        </h2>
+        <div className="overflow-x-auto mb-8">
+          <table className="w-full border-collapse text-sm">
+            <thead>
+              <tr>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">Situação</th>
+                <th className="bg-[#2c7df0] text-white text-left px-3 py-2">O que fazer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ['Atualização pendente', 'Aguardar análise. Você pode continuar editando o app enquanto espera'],
+                ['Atualização publicada', 'App disponível na loja. Menu lateral desbloqueado para gerenciamento completo'],
+                ['Atualização recusada', 'O motivo será exibido no Dashboard. Corrija e envie novamente pelo menu lateral > Publicação'],
+              ].map(([situacao, acao], i) => (
+                <tr key={situacao}>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#333] font-medium ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{situacao}</td>
+                  <td className={`px-3 py-2 border-b border-[#eee] text-[#555] ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}>{acao}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <hr className="border-[#e8e8e8] mb-8" />
+
+        {/* Próximos passos */}
+        <h2 className="text-lg font-semibold text-[#1a1a2e] border-b border-[#e8e8e8] pb-2 mb-4">
+          Próximos passos após a publicação
+        </h2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Com o app publicado, você terá acesso a todos os módulos pelo menu lateral:
+        </p>
+        <ul className="text-sm text-[#444] pl-5 space-y-2 mb-10">
+          <li><strong>Analytics</strong> — acompanhe instalações, dispositivos ativos e conversão</li>
+          <li><strong>Avaliações</strong> — veja e responda comentários dos usuários</li>
+          <li><strong>Finanças</strong> — monitore ganhos do AdAstra (requer integração do módulo AdAstra no app)</li>
+          <li><strong>Debug</strong> — monitore erros e crashes em produção</li>
+          <li><strong>Gênus AI</strong> — consulte a IA com dados do app para estratégias e melhorias</li>
+        </ul>
+
+        {/* Nav entre docs */}
+        <div className="border-t border-[#dde3f0] pt-6 flex justify-between text-sm">
+          <Link href="/docs" className="text-[#2c7df0] no-underline hover:underline">
+            ← Ver toda a documentação
+          </Link>
+          <Link href="/docs/publicar-atualizacoes" className="text-[#2c7df0] no-underline hover:underline">
+            Publicar Atualizações →
+          </Link>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-[#1e2235] text-[#6b7280] text-center py-5 text-sm">
+        © 2026 Aurora Play ·{' '}
+        <Link href="/docs" className="text-[#9ca3af] no-underline hover:text-white">
+          Documentação
+        </Link>
+      </footer>
+    </div>
   )
 }
