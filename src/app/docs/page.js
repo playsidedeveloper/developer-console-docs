@@ -51,6 +51,16 @@ const docs = [
     title: 'ASO — Aumentar Downloads',
     description: 'Técnicas de App Store Optimization para melhorar visibilidade e downloads na Aurora Play.',
   },
+  {
+    slug: 'avaliacoes-e-respostas',
+    title: 'Avaliações e Respostas',
+    description: 'Como visualizar as avaliações dos usuários e responder cada uma delas pelo Developer Console.',
+  },
+  {
+    slug: 'produtos-in-app',
+    title: 'Produtos In-App',
+    description: 'Como criar, editar e gerenciar produtos de compra dentro do seu app pelo Developer Console.',
+  },
 ]
 
 export const metadata = {
