@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import DocsSearch from '@/components/DocsSearch'
 
 const docs = [
   {
@@ -61,6 +62,11 @@ const docs = [
     title: 'Produtos In-App',
     description: 'Como criar, editar e gerenciar produtos de compra dentro do seu app pelo Developer Console.',
   },
+  {
+    slug: 'inbox-e-genus-ai',
+    title: 'Inbox e Gênus AI',
+    description: 'Como usar o Inbox para ver mensagens do app e a Gênus AI para analisar dados e obter sugestões personalizadas.',
+  },
 ]
 
 export const metadata = {
@@ -99,24 +105,9 @@ export default function DocsPage() {
         </p>
       </div>
 
-      {/* Docs Grid */}
+      {/* Docs Grid with Search */}
       <main className="max-w-4xl mx-auto px-6 pb-16 pt-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {docs.map((doc) => (
-            <Link
-              key={doc.slug}
-              href={`/docs/${doc.slug}`}
-              className="border border-[#dde3f0] rounded-lg p-5 no-underline hover:border-[#2c7df0] hover:shadow-sm transition-all bg-white"
-            >
-              <h3 className="text-[#2c7df0] font-semibold text-sm mb-2 leading-snug">
-                {doc.title}
-              </h3>
-              <p className="text-[#555] text-sm leading-relaxed m-0">
-                {doc.description}
-              </p>
-            </Link>
-          ))}
-        </div>
+        <DocsSearch docs={docs} />
       </main>
 
       {/* Footer */}
