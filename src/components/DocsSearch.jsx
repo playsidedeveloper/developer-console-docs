@@ -3,21 +3,32 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+const CATEGORIES = [
+  { id: 'all', label: 'Tudo' },
+  { id: 'inicio', label: 'Primeiros Passos' },
+  { id: 'publicacao', label: 'Publicação' },
+  { id: 'monetizacao', label: 'Monetização' },
+  { id: 'crescimento', label: 'Crescimento' },
+  { id: 'qualidade', label: 'Qualidade' },
+]
+
 export default function DocsSearch({ docs }) {
   const [query, setQuery] = useState('')
+  const [activeCategory, setActiveCategory] = useState('all')
 
-  const filtered = query.trim()
-    ? docs.filter(
-        (d) =>
-          d.title.toLowerCase().includes(query.toLowerCase()) ||
-          d.description.toLowerCase().includes(query.toLowerCase())
-      )
-    : docs
+  const filtered = docs.filter((d) => {
+    const matchesCategory = activeCategory === 'all' || d.category === activeCategory
+    const matchesQuery =
+      !query.trim() ||
+      d.title.toLowerCase().includes(query.toLowerCase()) ||
+      d.description.toLowerCase().includes(query.toLowerCase())
+    return matchesCategory && matchesQuery
+  })
 
   return (
     <div>
       {/* Search input */}
-      <div className="max-w-md mb-8">
+      <div className="max-w-md mb-6">
         <div className="relative">
           <svg
             className="absolute left-3 top-1/2 -translate-y-1/2 text-[#9ca3af] w-4 h-4"
@@ -51,12 +62,29 @@ export default function DocsSearch({ docs }) {
         </div>
       </div>
 
-      {/* Results count when searching */}
-      {query.trim() && (
+      {/* Category tabs */}
+      <div className="flex flex-wrap gap-2 mb-6">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => setActiveCategory(cat.id)}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors border ${
+              activeCategory === cat.id
+                ? 'bg-[#2c7df0] text-white border-[#2c7df0]'
+                : 'bg-white text-[#555] border-[#dde3f0] hover:border-[#2c7df0] hover:text-[#2c7df0]'
+            }`}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Results count when searching or filtering */}
+      {(query.trim() || activeCategory !== 'all') && (
         <p className="text-sm text-[#6b7280] mb-4">
           {filtered.length === 0
             ? 'Nenhum resultado encontrado.'
-            : `${filtered.length} resultado${filtered.length !== 1 ? 's' : ''} para "${query}"`}
+            : `${filtered.length} documento${filtered.length !== 1 ? 's' : ''}${query.trim() ? ` para "${query}"` : ''}`}
         </p>
       )}
 
@@ -67,11 +95,18 @@ export default function DocsSearch({ docs }) {
             <Link
               key={doc.slug}
               href={`/docs/${doc.slug}`}
-              className="border border-[#dde3f0] rounded-lg p-5 no-underline hover:border-[#2c7df0] hover:shadow-sm transition-all bg-white"
+              className="border border-[#dde3f0] rounded-lg p-5 no-underline hover:border-[#2c7df0] hover:shadow-sm transition-all bg-white flex flex-col"
             >
-              <h3 className="text-[#2c7df0] font-semibold text-sm mb-2 leading-snug">
-                {doc.title}
-              </h3>
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <h3 className="text-[#2c7df0] font-semibold text-sm leading-snug">
+                  {doc.title}
+                </h3>
+                {doc.category && doc.category !== 'all' && (
+                  <span className="shrink-0 text-[10px] font-medium text-[#9ca3af] bg-[#f3f4f6] rounded px-1.5 py-0.5 mt-0.5 whitespace-nowrap">
+                    {CATEGORIES.find((c) => c.id === doc.category)?.label ?? ''}
+                  </span>
+                )}
+              </div>
               <p className="text-[#555] text-sm leading-relaxed m-0">
                 {doc.description}
               </p>
@@ -79,20 +114,17 @@ export default function DocsSearch({ docs }) {
           ))}
         </div>
       ) : (
-        query.trim() && (
-          <div className="text-center py-12">
-            <p className="text-[#9ca3af] text-sm">
-              Tente buscar por outro termo ou{' '}
-              <button
-                onClick={() => setQuery('')}
-                className="text-[#2c7df0] underline cursor-pointer bg-transparent border-none p-0"
-              >
-                ver todos os docs
-              </button>
-              .
-            </p>
-          </div>
-        )
+        <div className="text-center py-12">
+          <p className="text-[#9ca3af] text-sm">
+            Nenhum resultado.{' '}
+            <button
+              onClick={() => { setQuery(''); setActiveCategory('all') }}
+              className="text-[#2c7df0] underline cursor-pointer bg-transparent border-none p-0"
+            >
+              Ver todos os docs
+            </button>
+          </p>
+        </div>
       )}
     </div>
   )
