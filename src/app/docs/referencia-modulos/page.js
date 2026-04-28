@@ -1,5 +1,499 @@
+import Link from 'next/link'
+
+export const metadata = {
+  title: 'Referência de Módulos — Developer Console',
+  description: 'Guia rápido de todos os módulos disponíveis no Developer Console da Aurora Play.',
+}
+
+function Navbar() {
+  return (
+    <nav className="bg-[#1e2235] px-8 py-3.5 flex items-center justify-between">
+      <Link href="/" className="text-[#2c7df0] font-bold text-base no-underline">
+        Developer Console
+      </Link>
+      <div className="flex items-center gap-6">
+        <Link href="/docs" className="text-[#9ca3af] text-sm no-underline hover:text-white transition-colors">
+          Documentação
+        </Link>
+        <a
+          href="https://mobsoft-console.up.railway.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#2c7df0] text-white px-4 py-2 rounded-md text-sm font-medium no-underline hover:bg-[#1a6de0] transition-colors"
+        >
+          Acessar Console
+        </a>
+      </div>
+    </nav>
+  )
+}
+
+function Breadcrumb({ current }) {
+  return (
+    <div className="bg-[#f7f9ff] border-b border-[#dde3f0] px-6 py-3">
+      <div className="max-w-3xl mx-auto flex items-center gap-2 text-sm text-[#6b7280]">
+        <Link href="/docs" className="text-[#2c7df0] no-underline hover:underline">
+          Documentação
+        </Link>
+        <span>/</span>
+        <span className="text-[#1a1a2e]">{current}</span>
+      </div>
+    </div>
+  )
+}
+
+function H2({ children }) {
+  return (
+    <h2 className="text-lg font-semibold text-[#2c7df0] border-b-2 border-[#e8e8e8] pb-1.5 mb-4 mt-8">
+      {children}
+    </h2>
+  )
+}
+
+function Note({ children, variant = 'blue' }) {
+  const cls =
+    variant === 'orange'
+      ? 'bg-[#fff8f0] border-[#fd7e14]'
+      : variant === 'yellow'
+      ? 'bg-[#fff8e6] border-[#f0a500]'
+      : 'bg-[#f0f5ff] border-[#2c7df0]'
+  return (
+    <div className={`${cls} border-l-4 rounded-r-lg px-4 py-3 mb-4`}>
+      <p className="text-sm text-[#444] m-0 leading-relaxed">{children}</p>
+    </div>
+  )
+}
+
+function Table({ headers, rows }) {
+  return (
+    <div className="overflow-x-auto mb-5">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr>
+            {headers.map((h) => (
+              <th key={h} className="bg-[#2c7df0] text-white text-left px-3 py-2 font-medium">
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell, j) => (
+                <td
+                  key={j}
+                  className={`px-3 py-2 border-b border-[#eee] text-[#444] align-top ${j === 0 ? 'font-medium text-[#333]' : ''} ${i % 2 === 1 ? 'bg-[#f7f9ff]' : ''}`}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function Badge({ children }) {
+  return (
+    <span className="inline-block bg-[#2c7df0] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+      {children}
+    </span>
+  )
+}
+
+function Avail({ children }) {
+  return (
+    <p className="text-xs text-[#6b7280] mt-3 mb-0">
+      <strong>Disponibilidade:</strong> {children}
+    </p>
+  )
+}
+
+function Code({ children }) {
+  return (
+    <code className="bg-[#f0f5ff] text-[#1a56db] px-1.5 py-0.5 rounded text-xs font-mono">
+      {children}
+    </code>
+  )
+}
+
+function Pre({ children }) {
+  return (
+    <pre className="bg-[#1e2235] text-[#e2e8f0] p-4 rounded-lg overflow-x-auto text-xs leading-relaxed font-mono mb-4">
+      {children}
+    </pre>
+  )
+}
+
 export default function Page() {
   return (
-    <div dangerouslySetInnerHTML={{ __html: "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\">\n<title>Referência de Módulos — Developer Console</title>\n<style>body{font-family:Arial,sans-serif;font-size:15px;line-height:1.65;color:#1a1a2e;background:#fff;max-width:900px;margin:0 auto;padding:0 20px 48px;}h1{color:#2c7df0;font-size:1.7em;margin-top:0;}h2{color:#2c7df0;font-size:1.25em;border-bottom:2px solid #e8f0fe;padding-bottom:4px;margin-top:32px;}h3{color:#1a56db;font-size:1.05em;margin-top:24px;}hr{border:none;border-top:1px solid #dde3f0;margin:28px 0;}blockquote{border-left:4px solid #2c7df0;margin:16px 0;padding:10px 16px;background:#f0f5ff;color:#333;border-radius:0 6px 6px 0;}code{background:#f0f5ff;color:#1a56db;padding:2px 5px;border-radius:4px;font-size:.88em;font-family:Courier New,monospace;}pre{background:#1e2235;color:#e2e8f0;padding:16px 18px;border-radius:8px;overflow-x:auto;font-size:.85em;line-height:1.5;margin:16px 0;}pre code{background:transparent;color:inherit;padding:0;font-size:inherit;}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.93em;}th{background:#2c7df0;color:#fff;padding:10px 12px;text-align:left;}td{padding:9px 12px;border-bottom:1px solid #dde3f0;vertical-align:top;}tr:nth-child(even) td{background:#f7f9ff;}ul,ol{padding-left:22px;margin:10px 0;}li{margin-bottom:5px;}p{margin:10px 0;}strong{color:#1a1a2e;}nav{background:#1e2235;padding:14px 20px;margin:0 -20px 32px;display:flex;align-items:center;gap:16px;}nav a{color:#9ca3af;text-decoration:none;font-size:.9em;}nav a:hover{color:#fff;}.brand{color:#2c7df0!important;font-weight:bold;font-size:1em!important;}.sep{color:#4b5563;}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:24px;}.card{border:1px solid #dde3f0;border-radius:8px;padding:20px;}.card h3{margin:0 0 8px;font-size:1em;}.card h3 a{color:#2c7df0;text-decoration:none;}.card h3 a:hover{text-decoration:underline;}.card p{margin:0;color:#555;font-size:.9em;}</style>\n</head>\n<body>\n<nav><a href=\"/docs\" class=\"brand\">Developer Console</a><span class=\"sep\"> / </span><a href=\"/docs/referencia-modulos\">Referência de Módulos</a></nav>\n<h1>Referência de Módulos — Developer Console</h1>\n<p>Guia rápido com o que cada módulo faz, como acessá-lo e quando está disponível.</p>\n<blockquote><strong>Nota:</strong> a maioria dos módulos fica bloqueada enquanto o app está em <strong>rascunho</strong> ou <strong>removido</strong>. Eles são desbloqueados após a primeira publicação aprovada.</blockquote>\n<hr>\n<h2>Dashboard</h2>\n<p><strong>O que é:</strong> tela central do app. Concentra métricas resumidas, status, acesso rápido a avaliações e erros, e links para todos os módulos via menu lateral.</p>\n<p><strong>Métricas exibidas</strong> (fornecidas pelo AdAstra — requerem integração do módulo no app):</p>\n<ul>\n  <li>Gráfico de instalações dos últimos 7 dias</li>\n  <li>Total de instalações acumuladas</li>\n  <li>Dispositivos ativos (últimos 7 dias)</li>\n  <li>Desinstalações</li>\n  <li>Atualizações realizadas</li>\n</ul>\n<p><strong>Monetização AdAstra resumida</strong> (exibida após integração do módulo):</p>\n<ul>\n  <li>Ganhos disponíveis para saque</li>\n  <li>CPM médio (ganho por mil instalações)</li>\n  <li>Ganhos estimados</li>\n  <li>Saldo da rede</li>\n</ul>\n<blockquote>Sem o AdAstra integrado, o Dashboard exibe um card de chamada: <strong>\"Instale o AdAstra para começar a gerar receita com seu aplicativo\"</strong>.</blockquote>\n<p><strong>Ações da toolbar:</strong></p>\n<ul>\n  <li><strong>Compartilhar</strong>: compartilha o link do app na Aurora Play via apps instalados no dispositivo</li>\n  <li><strong>Ver no Aurora Play</strong>: abre a página do app na loja em um navegador externo</li>\n</ul>\n<p><strong>Quando está disponível:</strong> sempre (para rascunho, exibe o checklist; para removido, exibe apenas o status).</p>\n<hr>\n<h2>Página Detalhes</h2>\n<p><strong>O que é:</strong> edição das informações visuais e textuais exibidas na loja — ícone, título, descrição, nome do desenvolvedor e screenshots.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Página Detalhes</strong></p>\n<p><strong>Campos editáveis:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Campo</th>\n  <th>Detalhe</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Ícone</td>\n  <td>Imagem principal do app. Na primeira vez, o app exige que o desenvolvedor assista a um vídeo de especificações antes de liberar o seletor</td>\n</tr>\n<tr>\n  <td>Título</td>\n  <td>Nome na loja</td>\n</tr>\n<tr>\n  <td>Descrição</td>\n  <td>Texto descritivo completo</td>\n</tr>\n<tr>\n  <td>Desenvolvedor</td>\n  <td>Nome ou empresa responsável</td>\n</tr>\n<tr>\n  <td>Screenshots</td>\n  <td>Mínimo de 3 imagens obrigatórias</td>\n</tr>\n<tr>\n  <td>Disponibilidade</td>\n  <td>Disponível ou Indisponível na loja</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Importante:</strong> alterações feitas aqui ficam pendentes até serem enviadas via módulo de <strong>Publicação</strong>.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Publicação</h2>\n<p><strong>O que é:</strong> tela de revisão e envio de todas as alterações pendentes do app para análise da equipe Aurora Play.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Publicação</strong></p>\n<p><strong>Como funciona:</strong></p>\n<ol>\n  <li>O console lista automaticamente as alterações salvas (metadados e/ou nova versão)</li>\n  <li>O desenvolvedor revisa o resumo</li>\n  <li>Clica em <strong>Publicar</strong> e confirma</li>\n  <li>Status muda para <strong>Atualização pendente</strong></li>\n</ol>\n<p>O botão <strong>Publicar</strong> fica desabilitado quando não há alterações pendentes.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Lançamentos</h2>\n<p><strong>O que é:</strong> histórico de versões publicadas e ponto de upload de novas versões do APK. Funciona em dois modos: Produção e Beta.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Lançamentos</strong></p>\n<p><strong>Funcionalidades:</strong></p>\n<ul>\n  <li>Listar versões já publicadas com número de versão, data e novidades</li>\n  <li>Criar nova versão via botão <strong>Nova Versão</strong></li>\n</ul>\n<p><strong>Upload de APK — campos necessários:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Campo</th>\n  <th>Detalhe</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Arquivo APK</td>\n  <td>Selecionado do dispositivo</td>\n</tr>\n<tr>\n  <td>Novidades</td>\n  <td>Descrição das mudanças desta versão (obrigatório)</td>\n</tr>\n</tbody>\n</table>\n<p>O sistema extrai automaticamente: packageName, versionName, versionCode e tamanho do arquivo.</p>\n<p><strong>Regras:</strong></p>\n<ul>\n  <li>O packageName não pode ser trocado após o primeiro upload</li>\n  <li>O versionCode deve ser sempre maior que o anterior (sem downgrade)</li>\n</ul>\n<p><strong>Exportar APK:</strong> é possível exportar o APK do próprio app instalado no dispositivo direto pela tela.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO). Não disponível para a faixa de pré-registro.</p>\n<hr>\n<h2>Testes</h2>\n<p><strong>O que é:</strong> gerenciamento das faixas de teste e dos testadores do app antes do lançamento em produção. As 3 faixas são criadas automaticamente quando o Dashboard é aberto pela primeira vez.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Testes</strong></p>\n<p><strong>Faixas disponíveis:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Faixa</th>\n  <th>Limite padrão</th>\n  <th>Descrição</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Teste Fechado (Alfa)</td>\n  <td>20 testadores</td>\n  <td>Grupo pequeno de testadores por convite</td>\n</tr>\n<tr>\n  <td>Teste Aberto (Beta)</td>\n  <td>100 testadores</td>\n  <td>Grupo maior de voluntários</td>\n</tr>\n<tr>\n  <td>Pré-registro</td>\n  <td>100 inscritos</td>\n  <td>Coleta inscrições antes do lançamento — sem APK</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Gerenciar Testadores:</strong> para faixas fechadas ou beta, é possível adicionar e remover testadores individualmente.</p>\n<p><strong>Configurar faixa:</strong> permite ajustar limite de participantes, status da faixa e modo de aprovação.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Analytics</h2>\n<p><strong>O que é:</strong> métricas detalhadas do app com dados de instalações, engajamento, origem dos usuários e conversão.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Analytics</strong> (ou clicando no bloco de métricas no Dashboard)</p>\n<p><strong>Métricas disponíveis:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Métrica</th>\n  <th>Descrição</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Instalações</td>\n  <td>Total no período</td>\n</tr>\n<tr>\n  <td>Dispositivos ativos</td>\n  <td>Abriram o app ao menos 1x nos últimos 7 dias</td>\n</tr>\n<tr>\n  <td>Desinstalações</td>\n  <td>Sem atividade há mais de 7 dias</td>\n</tr>\n<tr>\n  <td>Atualizações</td>\n  <td>Atualizações de versão realizadas</td>\n</tr>\n<tr>\n  <td>Visualizações</td>\n  <td>Visitas à página do app na loja</td>\n</tr>\n<tr>\n  <td>Conversão</td>\n  <td>% de visualizações que resultaram em instalação</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Breakdowns adicionais:</strong></p>\n<ul>\n  <li>Por país</li>\n  <li>Por canal de aquisição (orgânico, busca, indicação)</li>\n</ul>\n<p>Período padrão: <strong>últimos 7 dias</strong>.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Avaliações</h2>\n<p><strong>O que é:</strong> listagem de todas as avaliações enviadas por usuários do app na loja, com opção de resposta.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Avaliações</strong></p>\n<p><strong>Dados por avaliação:</strong></p>\n<ul>\n  <li>Nome do usuário</li>\n  <li>Nota (1 a 5 estrelas)</li>\n  <li>Comentário</li>\n  <li>Data</li>\n  <li>Resposta do desenvolvedor (se já respondeu)</li>\n</ul>\n<p>As avaliações mais recentes aparecem em preview no Dashboard. Clicar em \"ver mais\" abre esta tela completa.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Produtos In-App</h2>\n<p><strong>O que é:</strong> gerenciamento de produtos de compra dentro do app. Principalmente usado por apps pagos ou apps com compras in-app.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Produtos</strong></p>\n<p><strong>Campos de um produto:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Campo</th>\n  <th>Descrição</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>ID do Produto</td>\n  <td>Identificador único</td>\n</tr>\n<tr>\n  <td>Nome</td>\n  <td>Título exibido ao usuário</td>\n</tr>\n<tr>\n  <td>Descrição</td>\n  <td>Detalhes do produto</td>\n</tr>\n<tr>\n  <td>Preço</td>\n  <td>Valor cobrado</td>\n</tr>\n<tr>\n  <td>Conteúdo</td>\n  <td>URL do APK ou conteúdo digital entregue ao comprar</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Integração com APK:</strong> em apps pagos, ao fazer upload de uma nova versão, o campo de conteúdo do produto é atualizado automaticamente com a URL do novo APK.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Debug</h2>\n<p><strong>O que é:</strong> log de erros e crashes reportados pelo app em produção.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Debug View</strong></p>\n<p><strong>Dados por erro:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Campo</th>\n  <th>Descrição</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Tipo do Erro</td>\n  <td>Categoria ou classe do problema</td>\n</tr>\n<tr>\n  <td>Mensagem</td>\n  <td>Descrição do erro</td>\n</tr>\n<tr>\n  <td>Stack Trace</td>\n  <td>Rastreamento técnico</td>\n</tr>\n<tr>\n  <td>Dispositivo</td>\n  <td>Modelo e versão do Android</td>\n</tr>\n<tr>\n  <td>Versão do App</td>\n  <td>Em qual versão o erro ocorreu</td>\n</tr>\n<tr>\n  <td>Data/Hora</td>\n  <td>Quando aconteceu</td>\n</tr>\n<tr>\n  <td>Ocorrências</td>\n  <td>Frequência do problema</td>\n</tr>\n</tbody>\n</table>\n<p>Os erros mais recentes aparecem em preview no Dashboard.</p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Inbox</h2>\n<p><strong>O que é:</strong> central de mensagens com notificações da plataforma Aurora Play e feedbacks de usuários.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Inbox</strong></p>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Gênus AI</h2>\n<p><strong>O que é:</strong> assistente de inteligência artificial integrada ao console, com contexto dos dados do app.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Gênus AI</strong></p>\n<p>Ao abrir o chat, os dados de performance dos últimos 7 dias são enviados como contexto para a IA. A Gênus AI pode ajudar com:</p>\n<ul>\n  <li>SEO e visibilidade na loja</li>\n  <li>Estratégias de monetização</li>\n  <li>Crescimento e retenção de usuários</li>\n  <li>Planejamento de atualizações</li>\n  <li>Geração de código e ideias de projetos</li>\n</ul>\n<p><strong>Quando está disponível:</strong> sempre, independente do status do app.</p>\n<hr>\n<h2>Finanças</h2>\n<p><strong>O que é:</strong> módulo de gerenciamento financeiro. Centraliza ganhos do AdAstra, histórico de pagamentos e saldo para saque.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Finanças</strong></p>\n<blockquote>Os dados só são exibidos se o desenvolvedor tiver integrado o módulo AdAstra no app.</blockquote>\n<p><strong>Como funciona a monetização AdAstra:</strong></p>\n<p>O AdAstra exibe <strong>anúncios intersticiais</strong> dentro do app promovendo outros apps da loja Aurora Play. O desenvolvedor é remunerado por dispositivo que abre o app:</p>\n<table>\n<thead>\n<tr>\n  <th>Tipo de usuário</th>\n  <th>Ganho por dispositivo</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Novo usuário</td>\n  <td>R$ 0,03</td>\n</tr>\n<tr>\n  <td>Usuário fiel (já atualizou o app)</td>\n  <td>R$ 0,045 (+50% de bônus)</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Indicadores:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Indicador</th>\n  <th>Descrição</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Ganhos Disponíveis</td>\n  <td>Aprovados e prontos para saque (após atingir o limite mínimo)</td>\n</tr>\n<tr>\n  <td>CPM Médio</td>\n  <td>Ganho médio por mil instalações</td>\n</tr>\n<tr>\n  <td>Ganhos Estimados</td>\n  <td>Pendentes de aprovação</td>\n</tr>\n<tr>\n  <td>Saldo da Rede</td>\n  <td>Fundo total dos anunciantes — se negativo, ganhos são pausados</td>\n</tr>\n<tr>\n  <td>Limite para Saque</td>\n  <td>Valor mínimo para mover os ganhos disponíveis para o saldo da conta</td>\n</tr>\n</tbody>\n</table>\n<p><strong>Fluxo dos ganhos:</strong></p>\n<pre><code>Ganhos Estimados → (aprovação) → Ganhos Disponíveis → (limite atingido) → Saldo da Conta → Pagamento</code></pre>\n<p><strong>Monetização pausada quando:</strong></p>\n<ul>\n  <li>Saldo da rede negativo</li>\n  <li>App sem atualizações por mais de 15 dias</li>\n  <li>Conta do desenvolvedor bloqueada</li>\n</ul>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n<hr>\n<h2>Configurações</h2>\n<p><strong>O que é:</strong> configurações gerais do app publicado.</p>\n<p><strong>Acesso:</strong> Menu lateral &gt; <strong>Configurações</strong></p>\n<p><strong>Opções disponíveis:</strong></p>\n<table>\n<thead>\n<tr>\n  <th>Configuração</th>\n  <th>Detalhe</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n  <td>Nome do App</td>\n  <td>Editável</td>\n</tr>\n<tr>\n  <td>Package Name</td>\n  <td>Somente leitura após o primeiro APK — não pode ser alterado</td>\n</tr>\n<tr>\n  <td>Token FCM</td>\n  <td>Identificador de notificações push, somente leitura</td>\n</tr>\n<tr>\n  <td>Disponível na loja</td>\n  <td>Liga/desliga a visibilidade do app para usuários na Aurora Play</td>\n</tr>\n<tr>\n  <td>Receber notificações</td>\n  <td>Ativa ou desativa alertas do console para o desenvolvedor</td>\n</tr>\n<tr>\n  <td>Remover App</td>\n  <td>Remove o app da loja (requer confirmação — ação irreversível pelo console)</td>\n</tr>\n</tbody>\n</table>\n<blockquote><strong>Atenção:</strong> ao remover o app, o status muda para <code>REMOVIDO</code> e as funcionalidades do Dashboard ficam bloqueadas. Não é possível reativar pelo console.</blockquote>\n<p><strong>Quando está disponível:</strong> somente para apps publicados (ATIVO).</p>\n\n</body>\n</html>" }} />
+    <div
+      className="min-h-screen bg-white text-[#1a1a2e]"
+      style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
+    >
+      <Navbar />
+      <Breadcrumb current="Referência de Módulos" />
+
+      <main className="max-w-3xl mx-auto px-6 py-10 pb-16">
+        <h1 className="text-3xl font-bold text-[#2c7df0] mb-2">Referência de Módulos</h1>
+        <p className="text-[#555] text-base mb-6 leading-relaxed">
+          Guia rápido com o que cada módulo faz, como acessá-lo e quando está disponível.
+        </p>
+
+        <Note>
+          <strong>Nota:</strong> a maioria dos módulos fica bloqueada enquanto o app está em{' '}
+          <strong>rascunho</strong> ou <strong>removido</strong>. Eles são desbloqueados após a primeira
+          publicação aprovada.
+        </Note>
+
+        <hr className="border-[#e8e8e8] mb-2" />
+
+        {/* Dashboard */}
+        <H2>Dashboard</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Tela central do app. Concentra métricas resumidas, status, acesso rápido a avaliações e erros,
+          e links para todos os módulos via menu lateral.
+        </p>
+        <p className="text-sm font-medium text-[#333] mb-1">
+          Métricas exibidas <span className="font-normal text-[#6b7280]">(requerem AdAstra integrado):</span>
+        </p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>Gráfico de instalações dos últimos 7 dias</li>
+          <li>Total de instalações acumuladas</li>
+          <li>Dispositivos ativos (últimos 7 dias)</li>
+          <li>Desinstalações e atualizações realizadas</li>
+        </ul>
+        <p className="text-sm font-medium text-[#333] mb-1">Ações da toolbar:</p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li><strong>Compartilhar</strong>: compartilha o link do app na Aurora Play</li>
+          <li><strong>Ver no Aurora Play</strong>: abre a página do app na loja</li>
+        </ul>
+        <Note>
+          Sem o AdAstra integrado, o Dashboard exibe:{' '}
+          <em>&quot;Instale o AdAstra para começar a gerar receita com seu aplicativo&quot;</em>.
+        </Note>
+        <Avail>sempre (para rascunho, exibe checklist; para removido, exibe apenas o status).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Página Detalhes */}
+        <H2>Página Detalhes</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Edição das informações visuais e textuais exibidas na loja — ícone, título, descrição, nome
+          do desenvolvedor e screenshots.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Página Detalhes</strong>
+        </p>
+        <Table
+          headers={['Campo', 'Detalhe']}
+          rows={[
+            ['Ícone', 'Imagem principal. Na primeira vez, exige assistir a um vídeo de especificações antes de liberar o seletor.'],
+            ['Título', 'Nome exibido na loja'],
+            ['Descrição', 'Texto descritivo completo'],
+            ['Desenvolvedor', 'Nome ou empresa responsável'],
+            ['Screenshots', 'Mínimo de 3 imagens obrigatórias'],
+            ['Disponibilidade', 'Disponível ou Indisponível na loja'],
+          ]}
+        />
+        <Note variant="orange">
+          Alterações feitas aqui ficam pendentes até serem enviadas via módulo de{' '}
+          <strong>Publicação</strong>.
+        </Note>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Publicação */}
+        <H2>Publicação</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Tela de revisão e envio de todas as alterações pendentes do app para análise da equipe Aurora Play.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Publicação</strong>
+        </p>
+        <ol className="text-sm text-[#444] pl-5 space-y-1.5 mb-3">
+          <li>O console lista automaticamente as alterações salvas (metadados e/ou nova versão)</li>
+          <li>O desenvolvedor revisa o resumo</li>
+          <li>Clica em <strong>Publicar</strong> e confirma</li>
+          <li>Status muda para <strong>Atualização pendente</strong></li>
+        </ol>
+        <p className="text-sm text-[#444] mb-2">
+          O botão <strong>Publicar</strong> fica desabilitado quando não há alterações pendentes.
+        </p>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Lançamentos */}
+        <H2>Lançamentos</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Histórico de versões publicadas e ponto de upload de novas versões do APK. Funciona em dois modos:
+          Produção e Beta.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Lançamentos</strong>
+        </p>
+        <Table
+          headers={['Campo do APK', 'Detalhe']}
+          rows={[
+            ['Arquivo APK', 'Selecionado do dispositivo'],
+            ['Novidades', 'Descrição das mudanças desta versão (obrigatório)'],
+            ['packageName / versionName / versionCode', 'Extraídos automaticamente pelo sistema'],
+          ]}
+        />
+        <p className="text-sm font-medium text-[#333] mb-1">Regras:</p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>O <Code>packageName</Code> não pode ser trocado após o primeiro upload</li>
+          <li>O <Code>versionCode</Code> deve ser sempre maior que o anterior (sem downgrade)</li>
+        </ul>
+        <Avail>somente para apps publicados (ATIVO). Não disponível para a faixa de pré-registro.</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Testes */}
+        <H2>Testes</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Gerenciamento das faixas de teste e dos testadores do app. As 3 faixas são criadas
+          automaticamente quando o Dashboard é aberto pela primeira vez.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Testes</strong>
+        </p>
+        <Table
+          headers={['Faixa', 'Limite padrão', 'Descrição']}
+          rows={[
+            ['Teste Fechado (Alfa)', '20 testadores', 'Grupo pequeno de testadores por convite'],
+            ['Teste Aberto (Beta)', '100 testadores', 'Grupo maior de voluntários'],
+            ['Pré-registro', '100 inscritos', 'Coleta inscrições antes do lançamento — sem APK'],
+          ]}
+        />
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Analytics */}
+        <H2>Analytics</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Métricas detalhadas do app com dados de instalações, engajamento, origem dos usuários e conversão.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Analytics</strong> (ou clicando no bloco de métricas no Dashboard)
+        </p>
+        <Table
+          headers={['Métrica', 'Descrição']}
+          rows={[
+            ['Instalações', 'Total no período'],
+            ['Dispositivos ativos', 'Abriram o app ao menos 1x nos últimos 7 dias'],
+            ['Desinstalações', 'Sem atividade há mais de 7 dias'],
+            ['Atualizações', 'Atualizações de versão realizadas'],
+            ['Visualizações', 'Visitas à página do app na loja'],
+            ['Conversão', '% de visualizações que resultaram em instalação'],
+          ]}
+        />
+        <p className="text-sm text-[#444] mb-2">
+          <strong>Breakdowns adicionais:</strong> por país e por canal de aquisição (orgânico, busca, indicação).
+          Período padrão: <strong>últimos 7 dias</strong>.
+        </p>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Avaliações */}
+        <H2>Avaliações</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Listagem de todas as avaliações enviadas por usuários do app na loja, com opção de resposta.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Avaliações</strong>
+        </p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>Nome do usuário, nota (1–5 estrelas), comentário e data</li>
+          <li>Resposta do desenvolvedor (se já respondeu)</li>
+          <li>Preview das avaliações mais recentes aparece no Dashboard</li>
+        </ul>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Produtos In-App */}
+        <H2>Produtos In-App</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Gerenciamento de produtos de compra dentro do app. Principalmente usado por apps pagos ou com
+          compras in-app.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Produtos</strong>
+        </p>
+        <Table
+          headers={['Campo', 'Descrição']}
+          rows={[
+            ['ID do Produto', 'Identificador único'],
+            ['Nome', 'Título exibido ao usuário'],
+            ['Descrição', 'Detalhes do produto'],
+            ['Preço', 'Valor cobrado'],
+            ['Conteúdo', 'URL do APK ou conteúdo digital entregue ao comprar'],
+          ]}
+        />
+        <Note>
+          Em apps pagos, ao fazer upload de uma nova versão, o campo de conteúdo do produto é atualizado
+          automaticamente com a URL do novo APK.
+        </Note>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Debug */}
+        <H2>Debug</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Log de erros e crashes reportados pelo app em produção.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Debug View</strong>
+        </p>
+        <Table
+          headers={['Campo', 'Descrição']}
+          rows={[
+            ['Tipo do Erro', 'Categoria ou classe do problema'],
+            ['Mensagem', 'Descrição do erro'],
+            ['Stack Trace', 'Rastreamento técnico'],
+            ['Dispositivo', 'Modelo e versão do Android'],
+            ['Versão do App', 'Em qual versão o erro ocorreu'],
+            ['Data/Hora', 'Quando aconteceu'],
+            ['Ocorrências', 'Frequência do problema'],
+          ]}
+        />
+        <p className="text-sm text-[#444] mb-2">
+          Os erros mais recentes aparecem em preview no Dashboard.
+        </p>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Inbox */}
+        <H2>Inbox</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Central de mensagens com notificações da plataforma Aurora Play e feedbacks de usuários.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Inbox</strong>
+        </p>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Gênus AI */}
+        <H2>Gênus AI</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Assistente de inteligência artificial integrada ao console, com contexto dos dados do app.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Gênus AI</strong>
+        </p>
+        <p className="text-sm text-[#444] mb-2">
+          Ao abrir o chat, os dados de performance dos últimos 7 dias são enviados como contexto. A Gênus AI
+          pode ajudar com:
+        </p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>SEO e visibilidade na loja</li>
+          <li>Estratégias de monetização</li>
+          <li>Crescimento e retenção de usuários</li>
+          <li>Planejamento de atualizações</li>
+          <li>Geração de código e ideias de projetos</li>
+        </ul>
+        <Avail>sempre, independente do status do app.</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Finanças */}
+        <H2>Finanças</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Módulo de gerenciamento financeiro. Centraliza ganhos do AdAstra, histórico de pagamentos e
+          saldo para saque.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Finanças</strong>
+        </p>
+        <Note>
+          Os dados só são exibidos se o desenvolvedor tiver integrado o módulo AdAstra no app.
+        </Note>
+        <Table
+          headers={['Tipo de usuário', 'Ganho por dispositivo']}
+          rows={[
+            ['Novo usuário', 'R$ 0,03'],
+            ['Usuário fiel (já atualizou o app)', 'R$ 0,045 (+50% de bônus)'],
+          ]}
+        />
+        <Table
+          headers={['Indicador', 'Descrição']}
+          rows={[
+            ['Ganhos Disponíveis', 'Aprovados e prontos para saque (após atingir o limite mínimo)'],
+            ['CPM Médio', 'Ganho médio por mil instalações'],
+            ['Ganhos Estimados', 'Pendentes de aprovação'],
+            ['Saldo da Rede', 'Fundo total dos anunciantes — se negativo, ganhos são pausados'],
+            ['Limite para Saque', 'Valor mínimo para mover os ganhos disponíveis para o saldo da conta'],
+          ]}
+        />
+        <p className="text-sm font-medium text-[#333] mb-1">Fluxo dos ganhos:</p>
+        <Pre>{'Ganhos Estimados → (aprovação) → Ganhos Disponíveis → (limite atingido) → Saldo da Conta → Pagamento'}</Pre>
+        <p className="text-sm font-medium text-[#333] mb-1">Monetização pausada quando:</p>
+        <ul className="text-sm text-[#444] pl-5 space-y-1 mb-3">
+          <li>Saldo da rede negativo</li>
+          <li>App sem atualizações por mais de 15 dias</li>
+          <li>Conta do desenvolvedor bloqueada</li>
+        </ul>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        <hr className="border-[#e8e8e8] mb-2 mt-5" />
+
+        {/* Configurações */}
+        <H2>Configurações</H2>
+        <p className="text-sm text-[#444] leading-relaxed mb-3">
+          Configurações gerais do app publicado.
+        </p>
+        <p className="text-sm text-[#444] mb-3">
+          <strong>Acesso:</strong> Menu lateral → <strong>Configurações</strong>
+        </p>
+        <Table
+          headers={['Configuração', 'Detalhe']}
+          rows={[
+            ['Nome do App', 'Editável'],
+            ['Package Name', 'Somente leitura após o primeiro APK — não pode ser alterado'],
+            ['Token FCM', 'Identificador de notificações push, somente leitura'],
+            ['Disponível na loja', 'Liga/desliga a visibilidade do app para usuários na Aurora Play'],
+            ['Receber notificações', 'Ativa ou desativa alertas do console para o desenvolvedor'],
+            ['Remover App', 'Remove o app da loja (requer confirmação — ação irreversível pelo console)'],
+          ]}
+        />
+        <Note variant="yellow">
+          <span className="inline-block bg-[#f0a500] text-white text-xs font-semibold px-2 py-0.5 rounded-full mr-1">
+            Atenção
+          </span>
+          ao remover o app, o status muda para <Code>REMOVIDO</Code> e as funcionalidades do Dashboard
+          ficam bloqueadas. Não é possível reativar pelo console.
+        </Note>
+        <Avail>somente para apps publicados (ATIVO).</Avail>
+
+        {/* Nav entre docs */}
+        <div className="border-t border-[#dde3f0] pt-6 mt-10 flex justify-between text-sm">
+          <Link href="/docs/testes-beta-e-debug" className="text-[#2c7df0] no-underline hover:underline">
+            ← Testes Beta e Debug
+          </Link>
+          <Link href="/docs/monetizacao-adastra" className="text-[#2c7df0] no-underline hover:underline">
+            Monetização com AdAstra →
+          </Link>
+        </div>
+      </main>
+
+      <footer className="bg-[#1e2235] text-[#6b7280] text-center py-5 text-sm">
+        © 2026 Aurora Play ·{' '}
+        <Link href="/docs" className="text-[#9ca3af] no-underline hover:text-white">
+          Documentação
+        </Link>
+      </footer>
+    </div>
   )
 }
