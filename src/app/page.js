@@ -104,6 +104,92 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Primeiros Passos */}
+      <section style={{ background: '#f7f9ff', borderTop: '1px solid #dde3f0', padding: '64px 24px' }}>
+        <div style={{ maxWidth: '820px', margin: '0 auto' }}>
+          <h2 style={{ textAlign: 'center', fontSize: '1.6rem', fontWeight: '700', marginBottom: '8px', color: '#1a1a2e' }}>
+            Primeiros passos
+          </h2>
+          <p style={{ textAlign: 'center', color: '#555', marginBottom: '44px', fontSize: '1rem' }}>
+            Do cadastro à primeira publicação em quatro etapas.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {[
+              {
+                step: '01',
+                title: 'Conheça o Console',
+                desc: 'Entenda o painel, as abas disponíveis e o que cada seção oferece antes de começar.',
+                href: '/docs/developer-console-visao-geral',
+                label: 'Ver visão geral →',
+              },
+              {
+                step: '02',
+                title: 'Prepare seu APK',
+                desc: 'Saiba quais metadados, ícones e screenshots são necessários e como estruturar seu build.',
+                href: '/docs/publicar-primeiro-app',
+                label: 'Guia de publicação →',
+              },
+              {
+                step: '03',
+                title: 'Passe pelo Review',
+                desc: 'Conheça os critérios de aprovação para garantir que seu app seja aceito na primeira tentativa.',
+                href: '/docs/criterios-review-aprovacao',
+                label: 'Ver critérios →',
+              },
+              {
+                step: '04',
+                title: 'Monitore e Monetize',
+                desc: 'Acompanhe instalações e receita com Analytics e AdAstra logo após a publicação.',
+                href: '/docs/monitorar-analytics-metricas',
+                label: 'Ver Analytics →',
+              },
+            ].map((item, i, arr) => (
+              <div
+                key={item.step}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '20px',
+                  paddingBottom: i < arr.length - 1 ? '0' : '0',
+                  position: 'relative',
+                }}
+              >
+                {/* Linha vertical conectando os passos */}
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+                  <div style={{
+                    width: '44px', height: '44px', borderRadius: '50%',
+                    background: '#2c7df0', color: '#fff',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.85rem', fontWeight: '700', flexShrink: 0,
+                  }}>
+                    {item.step}
+                  </div>
+                  {i < arr.length - 1 && (
+                    <div style={{ width: '2px', height: '40px', background: '#dde3f0', margin: '4px 0' }} />
+                  )}
+                </div>
+
+                <div style={{ paddingBottom: '28px', flex: 1 }}>
+                  <h3 style={{ fontSize: '1rem', fontWeight: '600', color: '#1a1a2e', margin: '8px 0 6px' }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ color: '#555', fontSize: '0.9rem', lineHeight: '1.6', margin: '0 0 10px' }}>
+                    {item.desc}
+                  </p>
+                  <a
+                    href={item.href}
+                    style={{ color: '#2c7df0', fontSize: '0.88rem', fontWeight: '500', textDecoration: 'none' }}
+                  >
+                    {item.label}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA final */}
       <section style={{ background: '#f0f5ff', borderTop: '1px solid #dde3f0', padding: '56px 24px', textAlign: 'center' }}>
         <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '12px', color: '#1a1a2e' }}>
