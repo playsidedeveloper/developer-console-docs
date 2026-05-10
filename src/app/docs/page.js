@@ -91,19 +91,19 @@ export default function DocsPage() {
   return (
     <div className="min-h-screen bg-white text-[#1a1a2e]" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
       {/* Navbar */}
-      <nav className="bg-[#1e2235] px-8 py-3.5 flex items-center justify-between">
-        <Link href="/" className="text-[#2c7df0] font-bold text-base no-underline">
+      <nav className="bg-white border-b border-[#e5e7eb] px-8 py-3.5 flex items-center justify-between">
+        <Link href="/" className="text-[#111] font-bold text-base no-underline">
           Developer Console
         </Link>
         <div className="flex items-center gap-6">
-          <Link href="/docs" className="text-[#9ca3af] text-sm no-underline hover:text-white transition-colors">
+          <Link href="/docs" className="text-[#2563eb] text-sm no-underline hover:text-[#1d4ed8] transition-colors">
             Documentação
           </Link>
           <a
             href="https://mobsoft-console.up.railway.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#2c7df0] text-white px-4 py-2 rounded-md text-sm font-medium no-underline hover:bg-[#1a6de0] transition-colors"
+            className="bg-[#111] text-white px-4 py-2 rounded-md text-sm font-medium no-underline hover:bg-[#333] transition-colors"
           >
             Acessar Console
           </a>

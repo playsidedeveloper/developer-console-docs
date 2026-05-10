@@ -60,7 +60,7 @@ body {
 }
 
 .prose a {
-  @apply text-primary hover:text-blue-700 underline;
+  @apply text-[#2563eb] hover:text-[#1d4ed8] underline;
 }
 
 /* Scrollbar customizado */

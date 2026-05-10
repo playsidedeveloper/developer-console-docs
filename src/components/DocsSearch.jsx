@@ -48,7 +48,7 @@ export default function DocsSearch({ docs }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Buscar documentação..."
-            className="w-full pl-9 pr-4 py-2.5 border border-[#dde3f0] rounded-lg text-sm text-[#1a1a2e] placeholder-[#9ca3af] focus:outline-none focus:border-[#2c7df0] focus:ring-1 focus:ring-[#2c7df0] bg-white"
+            className="w-full pl-9 pr-4 py-2.5 border border-[#e5e7eb] rounded-lg text-sm text-[#1a1a2e] placeholder-[#9ca3af] focus:outline-none focus:border-[#111] focus:ring-1 focus:ring-[#111] bg-white"
           />
           {query && (
             <button
@@ -70,8 +70,8 @@ export default function DocsSearch({ docs }) {
             onClick={() => setActiveCategory(cat.id)}
             className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors border ${
               activeCategory === cat.id
-                ? 'bg-[#2c7df0] text-white border-[#2c7df0]'
-                : 'bg-white text-[#555] border-[#dde3f0] hover:border-[#2c7df0] hover:text-[#2c7df0]'
+                ? 'bg-[#111] text-white border-[#111]'
+                : 'bg-white text-[#555] border-[#e5e7eb] hover:border-[#2563eb] hover:text-[#2563eb]'
             }`}
           >
             {cat.label}
@@ -95,10 +95,10 @@ export default function DocsSearch({ docs }) {
             <Link
               key={doc.slug}
               href={`/docs/${doc.slug}`}
-              className="border border-[#dde3f0] rounded-lg p-5 no-underline hover:border-[#2c7df0] hover:shadow-sm transition-all bg-white flex flex-col"
+              className="border border-[#e5e7eb] rounded-lg p-5 no-underline hover:border-[#2563eb] hover:shadow-sm transition-all bg-[#f5f5f5] flex flex-col"
             >
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="text-[#2c7df0] font-semibold text-sm leading-snug">
+                <h3 className="text-[#2563eb] font-semibold text-sm leading-snug">
                   {doc.title}
                 </h3>
                 {doc.category && doc.category !== 'all' && (
@@ -119,7 +119,7 @@ export default function DocsSearch({ docs }) {
             Nenhum resultado.{' '}
             <button
               onClick={() => { setQuery(''); setActiveCategory('all') }}
-              className="text-[#2c7df0] underline cursor-pointer bg-transparent border-none p-0"
+              className="text-[#2563eb] underline cursor-pointer bg-transparent border-none p-0"
             >
               Ver todos os docs
             </button>
