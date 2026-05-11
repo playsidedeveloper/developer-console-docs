@@ -69,6 +69,12 @@ const docs = [
     category: 'crescimento',
   },
   {
+    slug: 'ciclo-de-vida-do-app',
+    title: 'Ciclo de Vida do App',
+    description: 'Todos os status do app (rascunho, pendente, pré-registro, publicado, suspenso) e como avançar em cada etapa.',
+    category: 'inicio',
+  },
+  {
     slug: 'testes-beta-e-debug',
     title: 'Testes Beta e Debug',
     description: 'Como usar faixas de teste (alfa/beta/pré-registro) e monitorar erros em produção.',
