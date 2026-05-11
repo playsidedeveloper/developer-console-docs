@@ -27,6 +27,12 @@ const docs = [
     category: 'publicacao',
   },
   {
+    slug: 'checklist-publicacao',
+    title: 'Checklist de Publicação',
+    description: 'Lista completa do que verificar antes de publicar ou atualizar seu app na Aurora Play.',
+    category: 'publicacao',
+  },
+  {
     slug: 'integrar-adastra',
     title: 'Integrar o AdAstra',
     description: 'Passo a passo para integrar o módulo AdAstra de monetização no seu app.',
